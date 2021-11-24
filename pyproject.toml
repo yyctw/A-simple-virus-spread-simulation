@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "nsd-project"
+version = "0.1.0"
+description = ""
+authors = ["Eric860730 <s12345d60@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pybind11 = "^2.8"
+numpy = "^1.21"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+autopep8 = "^1.5.4"
+rich = "^10.11"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
