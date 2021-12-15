@@ -80,7 +80,7 @@ public:
   size_t move_speed() const { return m_move_speed; }
   float infect_rate() const { return m_infect_rate; }
   float mortality_rate() const { return m_mortality_rate; }
-  size_t recovery_rate() const { return m_recovery_rate; }
+  float recovery_rate() const { return m_recovery_rate; }
   size_t healthcare_capacity() const { return m_healthcare_capacity; }
 
   // all input parameter
