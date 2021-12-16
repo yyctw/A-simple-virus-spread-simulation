@@ -41,3 +41,5 @@ Print result by animation.
 
 #### for performance
 :white_large_square: Change the type of infected_person from vector to unorder_map at line 165 in MySimulator.cpp.
+
+test github action
