@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "nsd-project"
+name = "MySimulation"
 version = "0.1.0"
 description = ""
 authors = ["Eric860730 <s12345d60@gmail.com>"]
@@ -8,6 +8,8 @@ authors = ["Eric860730 <s12345d60@gmail.com>"]
 python = "^3.8"
 pybind11 = "^2.8"
 numpy = "^1.21"
+matplotlib = "^3.5.1"
+pillow = "8.4.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

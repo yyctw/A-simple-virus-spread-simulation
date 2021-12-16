@@ -20,6 +20,13 @@ struct PersonStatus {
   float m_recovery_rate;
   // morality_rate
   float m_mortality_rate;
+
+
+  // member function for read data
+  size_t index() const { return m_index; }
+  float coord_x() const { return m_coordinate.first; }
+  float coord_y() const { return m_coordinate.second; }
+  size_t status() const { return m_status; }
 };
 
 struct myBoundary {
@@ -63,6 +70,7 @@ public:
   // SimulationParameter(SimulationParameter &&s)
   // Print current status
   void PrintStatus() {
+    std::cout << "===== Init Config =====" << std::endl;
     std::cout << "total number of people = " << this->m_total_num_people
               << std::endl;
     std::cout << "infected people = " << this->m_infected_people << std::endl;
@@ -72,6 +80,13 @@ public:
     std::cout << "recovery rate = " << this->m_recovery_rate << std::endl;
     std::cout << "healthcare capacity = " << this->m_healthcare_capacity
               << std::endl;
+    std::cout << "===== Global Status =====" << std::endl;
+    std::cout << "total number of people = " << this->m_total_num_people
+              << std::endl;
+    std::cout << "health people =  " << this->g_num_health << std::endl;
+    std::cout << "infected people =  " << this->g_num_infected << std::endl;
+    std::cout << "recovered people =  " << this->g_num_recovered << std::endl;
+    std::cout << "dead people =  " << this->g_num_dead << std::endl;
   }
 
   // member function for read data
@@ -82,6 +97,15 @@ public:
   float mortality_rate() const { return m_mortality_rate; }
   float recovery_rate() const { return m_recovery_rate; }
   size_t healthcare_capacity() const { return m_healthcare_capacity; }
+  // global info
+  size_t num_health() const { return g_num_health; }
+  size_t num_infected() const { return g_num_infected; }
+  size_t num_dead() const { return g_num_dead; }
+  size_t num_recovered() const { return g_num_recovered; }
+  float lx_bound() const {return g_boundary.left_x;}
+  float rx_bound() const {return g_boundary.right_x;}
+  float uy_bound() const {return g_boundary.up_y;}
+  float dy_bound() const {return g_boundary.down_y;}
 
   // all input parameter
   // total number of people for simulation(optional, default = 1000(<= 2000))
@@ -110,8 +134,8 @@ public:
   // the global number of recovered people.
   size_t g_num_recovered = 0;
 
-
   // global parameter
   myBoundary g_boundary;
   std::vector<PersonStatus> g_person_status;
+  std::vector<PersonStatus> g_infected_people;
 };
