@@ -1,6 +1,32 @@
 # NSD Term Project (f-21)
 ## A-simple-virus-spread-simulation
 
+## Build environment
+
+Install the dependencies with Poetry.
+
+``` bash
+poetry install --no-dev
+```
+
+Compile the \*.so file for run simulation.
+
+``` bash
+make
+```
+
+## Usage
+
+Run simulation using the Poetry environment.
+
+``` bash
+poetry run python3 main.py
+```
+
+The visualization results of the simulation will saved as a Sim.gif file in the root directory of this repo.
+
+---
+
 ### proposal
 https://github.com/Eric860730/nsdhw_21au/tree/Eric860730-proposal-submission/proposal/Eric860730
 
