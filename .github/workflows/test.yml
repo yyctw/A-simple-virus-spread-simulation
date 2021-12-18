@@ -24,7 +24,8 @@ jobs:
         run: |
               sudo apt-get update
               sudo apt-get install \
-                  curl build-essential make clang-11.0 gcc g++ python3
+                  curl build-essential make gcc g++ python3
+              sudo apt-get install clang-11 --install-suggests
       
       # Install python package by poetry
       - name: Install python package by poetry
