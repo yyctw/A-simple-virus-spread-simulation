@@ -31,7 +31,7 @@ jobs:
       - name: Install python package by poetry
         run: |        
               curl -sSL https://install.python-poetry.org | python3 -
-              poetry install --no-dev
+              poetry install
               
       # Runs test script
       - name: Run Simu_test.py script in test/
