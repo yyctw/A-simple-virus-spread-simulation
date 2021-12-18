@@ -14,7 +14,7 @@ struct PersonStatus {
   std::pair<float, float> m_direction_vector;
   // move speed
   size_t m_move_speed;
-  // health status 0: health, 1: infected, 2: recovered, -1: dead.
+  // health status 0: health, 1: infected, 2: recovered, 3: dead.
   size_t m_status;
   // recovery_rate
   float m_recovery_rate;

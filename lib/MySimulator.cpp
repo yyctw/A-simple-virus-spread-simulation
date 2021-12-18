@@ -80,8 +80,8 @@ void RecoveredOrDead(SimulationParameter &status) {
     }
     // dead
     else if (dead_prob <= status.g_infected_people[i].m_mortality_rate) {
-      status.g_person_status[status.g_infected_people[i].m_index].m_status = -1;
-      status.g_infected_people[i].m_status = -1;
+      status.g_person_status[status.g_infected_people[i].m_index].m_status = 3;
+      status.g_infected_people[i].m_status = 3;
       --status.g_num_infected;
       ++status.g_num_dead;
     }

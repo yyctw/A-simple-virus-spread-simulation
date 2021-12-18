@@ -40,7 +40,7 @@ def classify_people(simu_status):
         elif simu_status.g_person_status[i].status == 2:
             recovered = np.append(recovered, [[simu_status.g_person_status[i].coord_x, simu_status.g_person_status[i].coord_y]], axis = 0)
         # dead
-        elif simu_status.g_person_status[i].status == -1:
+        elif simu_status.g_person_status[i].status == 3:
             dead = np.append(dead, [[simu_status.g_person_status[i].coord_x, simu_status.g_person_status[i].coord_y]], axis = 0)
 
     return health, infected, recovered, dead
@@ -69,6 +69,8 @@ def draw_current_simu_status(simu_status, figure, fig1, fig2):
     fig1.scatter(recovered[:, 0], recovered[:, 1], s = 10.0, color = "blue")
     # dead: black
     fig1.scatter(dead[:, 0], dead[:, 1], s = 10.0, color = "black")
+    # TODO: cover the init (0, 0)
+    fig1.scatter(0, 0, s = 10.0, color = "white")
 
     # set figure 2
     fig2.set_title('infection statistics')
