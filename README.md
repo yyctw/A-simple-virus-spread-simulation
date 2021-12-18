@@ -33,11 +33,11 @@ Print result by animation.
 :white_large_square: Week 8: Flexible time(Add death rate of each age)
 
 ### TODO
-:white_large_square: Combine my cpp with python by pybind and visualize.
+:white_check_mark: Combine my cpp with python by pybind and visualize.
 
 :white_large_square: Github Action.
 
-:white_check_mark: Increase policy.
+:white_large_square: Increase policy.
 
 #### for performance
 :white_large_square: Change the type of infected_person from vector to unorder_map at line 165 in MySimulator.cpp.
