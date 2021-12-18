@@ -31,10 +31,13 @@ jobs:
       - name: Install python package by poetry
         run: |        
               curl -sSL https://install.python-poetry.org | python3 -
+              ls
               poetry install --no-dev
               
       # Runs test script
       - name: Run Simu_test.py script in test/
         run: |
+              ls
               poetry shell
+              ls
               make test
