@@ -36,4 +36,4 @@ jobs:
       # Runs test script
       - name: Run Simu_test.py script in test/
         run: |
-              poetry make test
+              poetry run make test
