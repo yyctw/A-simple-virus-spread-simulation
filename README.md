@@ -13,8 +13,10 @@ https://github.com/Eric860730/nsdhw_21au/tree/Eric860730-proposal-submission/pro
 
 12/18 [Feat] Github Action done.
 
+12/18 [Feat] Can plot simulation result as animation.
+
 ### Next goal
-Print result by animation.
+Plot statistic result as animation.
 
 ### Schedule
 
