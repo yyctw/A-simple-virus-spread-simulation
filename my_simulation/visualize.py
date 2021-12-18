@@ -6,7 +6,7 @@ import my_simulation
 import _simulator
 
 
-def build_figuer(lx_bound, rx_bound, dy_bound, uy_bound, simulation_steps, total_num_people):
+def build_figure(lx_bound, rx_bound, dy_bound, uy_bound, simulation_steps, total_num_people):
     # set figure
     figure = plt.figure(figsize = (5,7))
     spec = figure.add_gridspec(ncols=1, nrows=2, height_ratios=[5,2])
@@ -79,33 +79,37 @@ def draw_current_simu_status(simu_status, figure, fig1, fig2):
 
     # modify format
     figure.tight_layout()
-    plt.savefig('foo.png')
+    #plt.savefig('foo.png')
 
 
+def print_in_terminal(frames, simu_status):
+    print(f'iter: {frames}, health: {simu_status.num_health}, infected: {simu_status.num_infected}')
+    print(f'       recovered: {simu_status.num_recovered}, dead: {simu_status.num_dead}')
 
-def update(simu_status):
 
-    pass
+def update_ani(frames, simu_status, figure, fig1, fig2):
+    _simulator.Move(simu_status)
+    _simulator.SpreadVirus(simu_status)
+    if frames % 24 == 23:
+        _simulator.RecoveredOrDead(simu_status)
 
-def visualize(simu_status):
-    simulation_steps = 10000
-    # set figure
-    fig = plt.figure(figsize = (5,7))
-    spec = fig.add_gridspec(ncols=1, nrows=2, height_ratios=[5,2])
+    draw_current_simu_status(simu_status, figure, fig1, fig2)
+    print_in_terminal(frames, simu_status)
 
-    ax1 = fig.add_subplot(spec[0,0])
-    plt.title('infection simulation')
-    plt.xlim(simu_status.lx_bound - 0.1, simu_status.rx_bound + 0.1)
-    plt.ylim(simu_status.dy_bound - 0.1, simu_status.uy_bound + 0.1)
 
-    ax2 = fig.add_subplot(spec[1,0])
-    ax2.set_title('number of infected')
-    ax2.set_xlim(0, simulation_steps)
-    ax2.set_ylim(0, simu_status.total_num_people + 100)
+def run_and_build_animation(simu_status, simulation_steps):
+    figure, spec, fig1, fig2 = build_figure(simu_status.lx_bound, simu_status.rx_bound, simu_status.dy_bound, simu_status.uy_bound, simulation_steps, simu_status.total_num_people)
+    ani = FuncAnimation(figure, update_ani, fargs = (simu_status, figure, fig1, fig2), frames = simulation_steps, interval = 33)
 
-    infected_plot = []
-    fatalities_plot = []
-    animation = FuncAnimation(fig, update, fargs = (simu_status,), frames = simulation_steps, interval = 33)
+    ani.save('Sim.gif', writer='pillow', fps=1/0.04)
 
-    plt.show()
 
+class count_population():
+    def __init__(self):
+        self.health = []
+        self.infected = []
+        self.recovered = []
+        self.dead = []
+
+    def update_count(self, population):
+        pass

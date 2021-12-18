@@ -6,14 +6,14 @@ def init_config():
     total_num_people = 1000
     # init number of infected people (percentage or int) (optional, default = 1%)
     infected_people = 0.01
-    # moving speed of people (optional, default = 1)
-    move_speed = 1
+    # moving speed of people (optional, default = 3)
+    move_speed = 3
     # virus infection rate (optional, default = 70%)
     infect_rate = 0.7
     # virus mortality rate (optional, default = 30%)
-    mortality_rate = 0.3
+    mortality_rate = 0.1
     # recovery rate (optional, default = 30%)
-    recovery_rate = 0.3
+    recovery_rate = 0.1
     # healthcare capacity (optional, default = 100, The mortality rate is halved.)
     healthcare_capacity = 100
 
