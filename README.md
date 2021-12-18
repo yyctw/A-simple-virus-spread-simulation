@@ -11,6 +11,8 @@ https://github.com/Eric860730/nsdhw_21au/tree/Eric860730-proposal-submission/pro
 
 12/16 [Feat] Can run on python with pybind and plot result graph.
 
+12/18 [Feat] Github Action done.
+
 ### Next goal
 Print result by animation.
 
@@ -35,7 +37,7 @@ Print result by animation.
 ### TODO
 :white_check_mark: Combine my cpp with python by pybind and visualize.
 
-:white_large_square: Github Action.
+:white_check_mark: Github Action.
 
 :white_large_square: Increase policy.
 
