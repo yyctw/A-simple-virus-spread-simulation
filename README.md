@@ -1,10 +1,13 @@
 # NSD Term Project (f-21)
 ## A-simple-virus-spread-simulation
+``` Author: Eric Zhong```
 
 ## Overview
 
 A simple virus spread simulation, which can modify config.py to set the simulation configuration and run it.
+
 This simulation use C++ computing power to speed up the calculation process in the simulation process and use python to visualize the simulation results.
+
 This simulation combine C++ and python3 by pybind11.
 
 ## Build environment
@@ -38,6 +41,12 @@ poetry run python3 main.py
 ```
 
 The visualization results of the simulation will saved as a Sim.gif file in the root directory of this repo.
+
+## References
+
+1. [Why outbreaks like coronavirus spread exponentially, and how to “flatten the curve”](https://www.washingtonpost.com/graphics/2020/world/corona-simulator/)
+
+2. [python_corona_simulation](https://github.com/paulvangentcom/python_corona_simulation)
 
 ---
 
