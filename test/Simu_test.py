@@ -10,7 +10,7 @@ float_bias = 1e-5
 class Test_Simulator:
 
     def default_parameter(self):
-        default_parameter = SimulationParameter(1000, 5, 1, 0.7, 0.3, 0.3, 100, 0.0, 2.0, 2.0, 0.0)
+        default_parameter = SimulationParameter(1000, 5, 1, 0.7, 0.3, 0.3, 100, 0.0, 2.0, 2.0, 0.0, 1000, 1, 0.001, 0.02)
         return default_parameter
 
     def test_dafault_parameters(self):
