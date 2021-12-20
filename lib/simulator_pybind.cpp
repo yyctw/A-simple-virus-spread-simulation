@@ -13,6 +13,7 @@ PYBIND11_MODULE(_simulator, m) {
   m.def("Move", &Move, "Everyone move once");
   m.def("SpreadVirus", &SpreadVirus, "After move once, the infected_people have probability to spread the virus.");
   m.def("RecoveredOrDead", &RecoveredOrDead, "After a day, the infected_people have probability change to recovered or dead.");
+  m.def("ClassifyPeople", &ClassifyPeople, "Classify People for visualization.");
 
   py::class_<PersonStatus>(m, "PersonStatus")
     .def(py::init<size_t, std::pair<float, float>, std::pair<float, float>, size_t, size_t, float, float>())
@@ -22,7 +23,7 @@ PYBIND11_MODULE(_simulator, m) {
     .def_property_readonly("status", &PersonStatus::status);
 
   py::class_<SimulationParameter>(m, "SimulationParameter")
-    .def(py::init<size_t, size_t, size_t, float, float, float, int, float, float, float, float>())
+    .def(py::init<size_t, size_t, size_t, float, float, float, int, float, float, float, float, size_t, size_t, float, float>())
     // read parameter
     .def_property_readonly("total_num_people", &SimulationParameter::total_num_people)
     .def_property_readonly("infected_people", &SimulationParameter::infected_people)
@@ -39,8 +40,15 @@ PYBIND11_MODULE(_simulator, m) {
     .def_property_readonly("rx_bound", &SimulationParameter::rx_bound)
     .def_property_readonly("uy_bound", &SimulationParameter::uy_bound)
     .def_property_readonly("dy_bound", &SimulationParameter::dy_bound)
+    .def_property_readonly("dirty", &SimulationParameter::dirty)
+    .def_property_readonly("simu_step", &SimulationParameter::simu_step)
+    .def_property_readonly("mode", &SimulationParameter::mode)
 
     .def_property_readonly("print_status", &SimulationParameter::PrintStatus)
 
-    .def_readwrite("g_person_status", &SimulationParameter::g_person_status);
+    .def_readwrite("g_person_status", &SimulationParameter::g_person_status)
+    .def_readwrite("draw_health", &SimulationParameter::draw_health)
+    .def_readwrite("draw_infected", &SimulationParameter::draw_infected)
+    .def_readwrite("draw_recovered", &SimulationParameter::draw_recovered)
+    .def_readwrite("draw_dead", &SimulationParameter::draw_dead);
 }
