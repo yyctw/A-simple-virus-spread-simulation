@@ -1,6 +1,12 @@
 # NSD Term Project (f-21)
 ## A-simple-virus-spread-simulation
 
+## Overview
+
+A simple virus spread simulation, which can modify config.py to set the simulation configuration and run it.
+This simulation use C++ computing power to speed up the calculation process in the simulation process and use python to visualize the simulation results.
+This simulation combine C++ and python3 by pybind11.
+
 ## Build environment
 
 Install the dependencies with Poetry.
@@ -15,7 +21,15 @@ Compile the \*.so file for run simulation.
 make
 ```
 
-## Usage
+## Set config
+
+Modify simulation config in config.py before run simulation.
+
+``` bash
+vim config.py
+```
+
+## Run
 
 Run simulation using the Poetry environment.
 
@@ -41,8 +55,10 @@ https://github.com/Eric860730/nsdhw_21au/tree/Eric860730-proposal-submission/pro
 
 12/18 [Feat] Can plot simulation result as animation.
 
+12/20 [Feat] Finish plot and accelerate simulation time.
+
 ### Next goal
-Plot statistic result as animation.
+Add policy.
 
 ### Schedule
 
@@ -50,13 +66,13 @@ Plot statistic result as animation.
 
 :white_check_mark: Week 2: Simulator(policy: Free)
 
-:white_large_square: Week 3: Simulator(policy: Attempted quarantine)
+:red_circle: current doing ---> Week 3: Simulator(policy: Attempted quarantine)
 
 :white_large_square: Week 4: Simulator(policy: Moderate distancing)
 
 :white_large_square: Week 5: Simulator(policy: Extensive distancing)
 
-:red_circle: current doing ---> Week 6: Printer  
+:white_check_mark: Week 6: Printer
 
 :white_large_square: Week 7: Flexible time(Add death rate of each age)
 
@@ -71,5 +87,3 @@ Plot statistic result as animation.
 
 #### for performance
 :white_large_square: Change the type of infected_person from vector to unorder_map at line 165 in MySimulator.cpp.
-
-test github action
