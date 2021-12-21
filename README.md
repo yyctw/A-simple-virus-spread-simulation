@@ -66,8 +66,10 @@ https://github.com/Eric860730/nsdhw_21au/tree/Eric860730-proposal-submission/pro
 
 12/20 [Feat] Finish plot and accelerate simulation time.
 
+12/21 [Feat] Finish all basic policy.
+
 ### Next goal
-Add policy.
+Prepare final presentation.
 
 ### Schedule
 
@@ -75,24 +77,27 @@ Add policy.
 
 :white_check_mark: Week 2: Simulator(policy: Free)
 
-:red_circle: current doing ---> Week 3: Simulator(policy: Attempted quarantine)
+:white_check_mark: Week 3: Simulator(policy: Attempted quarantine)
 
-:white_large_square: Week 4: Simulator(policy: Moderate distancing)
+:white_check_mark: Week 4: Simulator(policy: Moderate distancing)
 
-:white_large_square: Week 5: Simulator(policy: Extensive distancing)
+:white_check_mark: Week 5: Simulator(policy: Extensive distancing)
 
 :white_check_mark: Week 6: Printer
 
-:white_large_square: Week 7: Flexible time(Add death rate of each age)
+:red_circle: current doing ---> Week 7: Prepare final presentation.
 
 :white_large_square: Week 8: Flexible time(Add death rate of each age)
 
 ### TODO
+
 :white_check_mark: Combine my cpp with python by pybind and visualize.
 
 :white_check_mark: Github Action.
 
-:white_large_square: Increase policy.
+:white_check_mark: Increase policy.
+
+:white_large_square: Increase customized policy.
 
 #### for performance
 :white_large_square: Change the type of infected_person from vector to unorder_map at line 165 in MySimulator.cpp.

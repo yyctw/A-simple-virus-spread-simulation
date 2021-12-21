@@ -9,3 +9,4 @@ void SpreadVirus(SimulationParameter &status);
 void Run(SimulationParameter &status);
 void InitSimulation(SimulationParameter &status);
 void ClassifyPeople(SimulationParameter &status);
+void RunStep(SimulationParameter &status);
