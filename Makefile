@@ -41,4 +41,5 @@ benchmark:
 
 clean:
 	$(RM) lib/*.o $(TARGET).*.so $(EXEC)
+	$(RM) -r image
 	$(RM) -r __pycache__/
