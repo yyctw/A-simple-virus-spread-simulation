@@ -91,13 +91,53 @@ config
 
 policy = 0 : free without healthcare
 
+![Sim_policy0](image/Sim_policy0.gif)
+
+Final result
+
+![Sim_policy0_result](image/Sim_policy0.png)
+
+---
+
 policy = 1 : free with healthcare (healthcare can reduce the mortality rate by half.)
+
+![Sim_policy1](image/Sim_policy1.gif)
+
+Final result
+
+![Sim_policy1_result](image/Sim_policy1.png)
+
+---
 
 policy = 2 : Attempted quarantine (infected people will go to quarantine area.)
 
+![Sim_policy2](image/Sim_policy2.gif)
+
+Final result
+
+![Sim_policy2_result](image/Sim_policy2.png)
+
+---
+
 policy = 3 : Moderate distancing (60% people can not move)
 
+![Sim_policy3](image/Sim_policy3.gif)
+
+Final result
+
+![Sim_policy3_result](image/Sim_policy3.png)
+
+---
+
 policy = 4 : Extensive distancing (90% people can not move)
+
+![Sim_policy4](image/Sim_policy4.gif)
+
+Final result
+
+![Sim_policy4_result](image/Sim_policy4.png)
+
+---
 
 ## References
 
