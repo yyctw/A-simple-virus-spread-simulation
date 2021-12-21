@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.animation import FuncAnimation
 import numpy as np
+import os
 
 import my_simulation
 import _simulator
@@ -121,10 +122,6 @@ def draw_current_simu_status(simu_status, figure, fig1, fig2, count_population, 
     # Place a legend in this subplot
     fig2.legend(loc = 'best')
 
-    # modify format
-    #figure.tight_layout()
-    #plt.savefig('foo.png')
-
 
 def print_in_terminal(frames, simu_status):
     print(f'\riter: {frames+1}, health: {simu_status.num_health}, infected: {simu_status.num_infected}')
@@ -147,5 +144,7 @@ def run_and_build_animation(simu_status):
     print_in_terminal(0, simu_status)
     ani = FuncAnimation(figure, update_ani, fargs = (simu_status, figure, fig1, fig2, count_population), frames = simu_status.simu_step, interval = 10)
 
-    ani.save('Sim_m%i_p%i.gif' %(simu_status.mode, simu_status.policy), writer='pillow', fps=1/0.04)
-    plt.savefig('mode%ipolicy%i.png' %(simu_status.mode, simu_status.policy))
+    if not os.path.exists('./image'):
+        os.makedirs('./image')
+    ani.save('./image/Sim_policy%i.gif' %simu_status.policy, writer='pillow', fps=1/0.04)
+    plt.savefig('./image/Sim_policy%i.png' %simu_status.policy)

@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import _simulator
 import numpy as np
 import sys
+import os
 
 
 def run(simu_status):
@@ -40,7 +41,9 @@ def run(simu_status):
             if simu_status.dirty == True:
                 print_in_terminal(frames, simu_status)
         draw_current_simu_status(simu_status, figure, fig1, fig2, count_pop, frames)
-        plt.savefig('mode%ipolicy%i.png' %(simu_status.mode, simu_status.policy))
+        if not os.path.exists('./image'):
+            os.makedirs('./image')
+        plt.savefig('./image/Sim_policy%i.png' %simu_status.policy)
 
 
 def simulate(simu_status):
