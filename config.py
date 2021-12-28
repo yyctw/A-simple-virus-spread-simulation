@@ -4,7 +4,7 @@ You can only change the value of each variables, other changes is not allow.
 """
 # all input parameter
 # total number of people for simulation(optional, default = 1000(<= 2000))
-TOTAL_POPULATION = 10000
+TOTAL_POPULATION = 1000
 # init number of infected people(percentage)(optional, default =
 # 1 %)
 INFECTED_PEOPLE = 0.01
