@@ -27,39 +27,53 @@ def set_simulation_state(config) -> _simulator.SimulationState:
         config.MODE,
         config.MOVE_STEP,
         config.SPREAD_RANGE,
-        config.POLICY)
+        config.POLICY,
+        config.ACCEPT_ISOLATION_RATE)
 
     return simulation
 
 
-def save_result(simulation_state: _simulator.SimulationState, figure: plt.figure, fig1: plt.figure, fig2: plt.figure, count_pop: my_simulation.population, frames: int) -> None:
+def save_result(
+        simulation_state: _simulator.SimulationState,
+        figure: plt.figure,
+        fig1: plt.figure,
+        fig2: plt.figure,
+        count_pop: my_simulation.population,
+        frames: int) -> None:
     """
-    After the simulator is finished, save the result image in certain directory.
+    After the simulator is finished, save the result image in ./output_images/Simulation_policy{policy_num}.png.
     """
 
     # Finished simulator, draw the result figure
-    my_simulation.draw_current_simulation_state(simulation_state, figure, fig1, fig2, count_pop, frames)
+    my_simulation.draw_current_simulation_state(
+        simulation_state, figure, fig1, fig2, count_pop, frames)
 
     # Finished simulator, saved the result figure
     dirname = './output_images'
-    os.makedirs(dirname, exist_ok = True)
+    os.makedirs(dirname, exist_ok=True)
     plt.savefig(f'{dirname}/Simulation_policy{simulation_state.policy}.png')
 
 
-def on_each_iter_updated(simulation_state: _simulator.SimulationState, figure: plt.figure, fig1: plt.figure, fig2: plt.figure, count_pop: my_simulation.population, frames: int) -> None:
+def on_each_iter_updated(
+        simulation_state: _simulator.SimulationState,
+        figure: plt.figure,
+        fig1: plt.figure,
+        fig2: plt.figure,
+        count_pop: my_simulation.population,
+        frames: int) -> None:
     """
     In each iteration, the current simulation state is drawn.
     If the simulation state been changed, print current state of population in terminal
     """
     # visualize
     if simulation_state.mode == 1:
-        my_simulation.draw_current_simulation_state(simulation_state, figure, fig1, fig2, count_pop, frames)
+        my_simulation.draw_current_simulation_state(
+            simulation_state, figure, fig1, fig2, count_pop, frames)
         plt.draw()
         plt.pause(0.0001)
 
-    if simulation_state.dirty == True:
+    if simulation_state.dirty:
         my_simulation.print_in_terminal(frames, simulation_state)
-
 
 
 def main() -> None:
@@ -74,7 +88,8 @@ def main() -> None:
     simulation_state = set_simulation_state(config)
 
     # init figure for visualization
-    figure, _, fig1, fig2 = my_simulation.build_figure(simulation_state.lx_bound, simulation_state.rx_bound, simulation_state.dy_bound, simulation_state.uy_bound, simulation_state.simulation_step, simulation_state.total_num_people)
+    figure, _, fig1, fig2 = my_simulation.build_figure(simulation_state.lx_bound, simulation_state.rx_bound, simulation_state.dy_bound,
+                                                       simulation_state.uy_bound, simulation_state.simulation_step, simulation_state.total_num_people)
     e = time.time()
     print(f'=== Initialize time: {e-s} ===')
 
@@ -82,12 +97,18 @@ def main() -> None:
     if simulation_state.mode == 2:
         # Store the results in a gif file.
         s = time.time()
-        my_simulation.run_and_build_animation(simulation_state, figure, fig1, fig2)
+        my_simulation.run_and_build_animation(
+            simulation_state, figure, fig1, fig2)
         e = time.time()
         print(f'=== TOTAL TIME: {e-s}')
     else:
-        my_simulation.run(simulation_state, figure, fig1, fig2, on_each_iter_updated, save_result)
-
+        my_simulation.run(
+            simulation_state,
+            figure,
+            fig1,
+            fig2,
+            on_each_iter_updated,
+            save_result)
 
 
 if __name__ == '__main__':
