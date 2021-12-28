@@ -1,6 +1,5 @@
 import os
 import matplotlib.pyplot as plt
-import time
 
 import config
 import my_simulation
@@ -83,24 +82,18 @@ def main() -> None:
     2. init figure for visualization
     3. run simulator
     """
-    s = time.time()
     # read all config from config.py file and ste init simulation state
     simulation_state = set_simulation_state(config)
 
     # init figure for visualization
     figure, _, fig1, fig2 = my_simulation.build_figure(simulation_state.lx_bound, simulation_state.rx_bound, simulation_state.dy_bound,
                                                        simulation_state.uy_bound, simulation_state.simulation_step, simulation_state.total_num_people)
-    e = time.time()
-    print(f'=== Initialize time: {e-s} ===')
 
     # run simulator
     if simulation_state.mode == 2:
         # Store the results in a gif file.
-        s = time.time()
         my_simulation.run_and_build_animation(
             simulation_state, figure, fig1, fig2)
-        e = time.time()
-        print(f'=== TOTAL TIME: {e-s}')
     else:
         my_simulation.run(
             simulation_state,
