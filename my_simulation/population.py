@@ -1,3 +1,6 @@
+"""
+Count the number of people in each state at every time step for draw the statistics graph.
+"""
 class population():
     def __init__(self):
         self.infected = []
