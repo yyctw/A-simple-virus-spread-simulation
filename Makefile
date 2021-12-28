@@ -1,4 +1,4 @@
-.PHONY: all test benchmark clean run re
+.PHONY: all test clean run
 
 CC = clang++-11
 CFLAGS = -Wall -std=c++17 -O3 -m64 -fPIC
@@ -30,14 +30,6 @@ test: all
 
 run: all
 	./$(EXEC)
-
-re:
-	make clean
-	make
-	make run
-
-benchmark:
-	$(PYTHON) benchmark.py
 
 clean:
 	$(RM) lib/*.o $(TARGET).*.so $(EXEC)
