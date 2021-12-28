@@ -9,8 +9,6 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(_simulator, m) {
   m.doc() = "test my simulator";
-  m.def("InitSimulation", &InitSimulation,
-        "After Read Config file, init the environment of simulation");
   m.def("Move", &Move, "Everyone move once");
   m.def("SpreadVirus", &SpreadVirus,
         "After move once, the infected_people have probability to spread the "
@@ -30,41 +28,41 @@ PYBIND11_MODULE(_simulator, m) {
       .def_property_readonly("coord_y", &PersonStatus::coord_y)
       .def_property_readonly("status", &PersonStatus::status);
 
-  py::class_<SimulationParameter>(m, "SimulationParameter")
+  py::class_<SimulationState>(m, "SimulationState")
       .def(py::init<size_t, size_t, size_t, float, float, float, int, float,
                     float, float, float, size_t, size_t, float, float, size_t>())
       // read parameter
       .def_property_readonly("total_num_people",
-                             &SimulationParameter::total_num_people)
+                             &SimulationState::total_num_people)
       .def_property_readonly("infected_people",
-                             &SimulationParameter::infected_people)
-      .def_property_readonly("move_speed", &SimulationParameter::move_speed)
-      .def_property_readonly("infect_rate", &SimulationParameter::infect_rate)
+                             &SimulationState::infected_people)
+      .def_property_readonly("move_speed", &SimulationState::move_speed)
+      .def_property_readonly("infect_rate", &SimulationState::infect_rate)
       .def_property_readonly("mortality_rate",
-                             &SimulationParameter::mortality_rate)
+                             &SimulationState::mortality_rate)
       .def_property_readonly("recovery_rate",
-                             &SimulationParameter::recovery_rate)
+                             &SimulationState::recovery_rate)
       .def_property_readonly("healthcare_capacity",
-                             &SimulationParameter::healthcare_capacity)
-      .def_property_readonly("num_health", &SimulationParameter::num_health)
-      .def_property_readonly("num_infected", &SimulationParameter::num_infected)
-      .def_property_readonly("num_dead", &SimulationParameter::num_dead)
+                             &SimulationState::healthcare_capacity)
+      .def_property_readonly("num_health", &SimulationState::num_health)
+      .def_property_readonly("num_infected", &SimulationState::num_infected)
+      .def_property_readonly("num_dead", &SimulationState::num_dead)
       .def_property_readonly("num_recovered",
-                             &SimulationParameter::num_recovered)
-      .def_property_readonly("lx_bound", &SimulationParameter::lx_bound)
-      .def_property_readonly("rx_bound", &SimulationParameter::rx_bound)
-      .def_property_readonly("uy_bound", &SimulationParameter::uy_bound)
-      .def_property_readonly("dy_bound", &SimulationParameter::dy_bound)
-      .def_property_readonly("dirty", &SimulationParameter::dirty)
-      .def_property_readonly("simu_step", &SimulationParameter::simu_step)
-      .def_property_readonly("mode", &SimulationParameter::mode)
-      .def_property_readonly("policy", &SimulationParameter::policy)
+                             &SimulationState::num_recovered)
+      .def_property_readonly("lx_bound", &SimulationState::lx_bound)
+      .def_property_readonly("rx_bound", &SimulationState::rx_bound)
+      .def_property_readonly("uy_bound", &SimulationState::uy_bound)
+      .def_property_readonly("dy_bound", &SimulationState::dy_bound)
+      .def_property_readonly("dirty", &SimulationState::dirty)
+      .def_property_readonly("simulation_step", &SimulationState::simulation_step)
+      .def_property_readonly("mode", &SimulationState::mode)
+      .def_property_readonly("policy", &SimulationState::policy)
 
-      .def_property_readonly("print_status", &SimulationParameter::PrintStatus)
+      .def_property_readonly("print_status", &SimulationState::PrintStatus)
 
-      .def_readwrite("g_person_status", &SimulationParameter::g_person_status)
-      .def_readwrite("draw_health", &SimulationParameter::draw_health)
-      .def_readwrite("draw_infected", &SimulationParameter::draw_infected)
-      .def_readwrite("draw_recovered", &SimulationParameter::draw_recovered)
-      .def_readwrite("draw_dead", &SimulationParameter::draw_dead);
+      .def_readwrite("g_person_status", &SimulationState::g_person_status)
+      .def_readwrite("draw_health", &SimulationState::draw_health)
+      .def_readwrite("draw_infected", &SimulationState::draw_infected)
+      .def_readwrite("draw_recovered", &SimulationState::draw_recovered)
+      .def_readwrite("draw_dead", &SimulationState::draw_dead);
 }
