@@ -3,7 +3,6 @@ import matplotlib.patches as mpatches
 from matplotlib.animation import FuncAnimation
 import numpy as np
 import os
-import time
 
 import my_simulation
 import _simulator
@@ -49,6 +48,11 @@ def draw_current_simulation_state(simulation_state, figure, fig1, fig2, count_po
     fig1.set_ylabel("Y")
 
     try:
+        # dead: black
+        fig1.scatter(dead[:, 0], dead[:, 1], s = 10.0, color = "black", label = 'dead')
+    except:
+        pass
+    try:
         # health: green
         fig1.scatter(health[:, 0], health[:, 1], s = 10.0, color = "green", label = 'health')
     except:
@@ -85,21 +89,15 @@ def draw_current_simulation_state(simulation_state, figure, fig1, fig2, count_po
         fig1.scatter(recovered[:, 0], recovered[:, 1], s = 10.0, color = "blue", label = 'recovered')
     except:
         pass
-    try:
-        # dead: black
-        fig1.scatter(dead[:, 0], dead[:, 1], s = 10.0, color = "black", label = 'dead')
-    except:
-        pass
 
 
     fig1.legend(loc = 'upper right')
     # add text descriptors
-    fig1.text(simulation_state.lx_bound, simulation_state.uy_bound + 0.13, 'simu_time: %i, total: %i, healthy: %i, infected: %i, recovered: %i, dead: %i' %(frames+1, simulation_state.total_num_people, simulation_state.num_health, simulation_state.num_infected, simulation_state.num_recovered, simulation_state.num_dead), fontsize = 8)
+    fig1.text(simulation_state.lx_bound, simulation_state.uy_bound + 0.13, 'simulation_time: %i, total: %i, healthy: %i, infected: %i, recovered: %i, dead: %i' %(frames+1, simulation_state.total_num_people, simulation_state.num_health, simulation_state.num_infected, simulation_state.num_recovered, simulation_state.num_dead), fontsize = 8)
 
 
     # set figure 2
     fig2.set_title('infection statistics')
-    #fig2.set_xlim(0, simulation_state.simulation_step)
     fig2.set_xlim(0, frames + 1)
     fig2.set_ylim(0, simulation_state.total_num_people + 100)
     fig2.set_xlabel("Time step")
