@@ -17,10 +17,9 @@ According to [this article](https://www.washingtonpost.com/graphics/2020/world/c
 In order to prevent the spread of COVID-19, each country/region has implemented many policies (e.g. quarantine, restriction of in-store dining, lockdown...).
 These policies have produced different results in controlling the spread of COVID-19.
 
-
-I want to simulate the impact of different policies on the spread of pandemic viruses.
+The system can simulate the impact of different policies on the spread of pandemic viruses.
 User can adjust parameters(e.g. virus infection rate, virus mortality rate...) and policy to observe the final result.
-I will use animation to show the process of infection and print the distribution of the virus spread.
+Finally, the syetem will output the animation to show the process of infection and saved the final simulation results.
 Therefore, we can observe the difference in the distribution of infection under different policies.
 
 ## Prospective Users
@@ -37,40 +36,19 @@ Then observe the distribution of the virus spread and the number of deaths.
 ### Mathematical Model Description
 
 This is a dynamicial system. A dynamic system is a fixed rule that describes how all points in a fixed space change over time.
-First of all, I will give an activity area, and a dot represents a person. I will use input parameters to init everyone's status and build my mathematical model.
+First of all, the system will give an activity area, and a dot represents a person. It will use input parameters to init everyone's state and build the mathematical model.
 
-When running the Mathematical model, this model updates the status of everyone after each time slice. The following is the calculation of the model.
-1. Check the status of everyone, find all infected poeple.
-2. According to those who are infected, find out all the people who are exposed to the risk of infection around the infected person.
-3. For those who are exposed at risk of infection
+When running the Mathematical model, this model updates the state of everyone after each time step. The following is the calculation of the model.
+The components in RunStep():
 
-* check infection or not
-    
-  randomly produce a infection number(float) between 0 and 1, if the infection number less than virus infection rate, then this person is not infected. Otherwise, change the status of this person to infected.
+1. CheckPolicy(): Check the policy and modify the population state according to the policy.
+2. Move(): Everyone move one step.
+3. UpdateDirection(): Check everyone's direction and update as needed.
+4. SpreadVirus(): Check the distance between health person and infected person, if distance <= SPREAD_RANGE, the health person has the probability of INFECTED_RATE to be infected the virus.
+5. RecoveredOrDead(): For those who are infected, update their status(maintain infection or recover or die).
+6. ClassifyPeople(): Classify People and save their coordinates for draw the results.
 
-4. For those who are already infected
-
-* check death or not
-    
-  randomly produce a death number(float) between 0 and 1, if the death number less than virus mortality rate, then survive. Otherwise, change this person status to death.
-
-* check recovery or not
-
-5. Summary the status of everyone
-
-* check whether the policy should be implemented.
-
-* if there is no one be infected, then terminate.
-
-6. For all survived people(at the end of update)
-
-* check the status of position
-
-  If there is a collision, change the direction randomly.
-
-* check the policy implement or not.
-
-Execute above calculations at each time slice until there is no one be infected.
+Execute above calculations at each time step until there is no one be infected.
 
 ## Program Workflow
 
@@ -81,7 +59,7 @@ Execute above calculations at each time slice until there is no one be infected.
 
 2. Run simulator(mathematic model)
 
-3. Print result
+3. Visualize the results(in visualize.py)
 
 ## System Components
 
@@ -91,30 +69,19 @@ Execute above calculations at each time slice until there is no one be infected.
 
 ## System Workflow
 
-## API Description
 
-1. Parser:
-   
-   getParameters(): Returns parsed parameters.
+## API Description
 
 2. Simulator:
    
    simulateVirusSpread(parameters: parser's results): According to the user's input, the spread of the virus is simulated.
    
-   customizePolicy(order=int, total_people=int, infected_poeple=int, recovered_people=int, dead_poeple=int, infection_rate=float, mortality_rate=float, recovered_time=int, people_speed=int, healthcare_cap=int, quarantine_cap=int, quarantine_accept=float)
-  
-* order : The order in which policy is executed. -1 indicates the policy implemented at the beginning.
-* policy trigger conditions(Enter at least one) : total_people=int, infected_poeple=int, recovered_people=int, dead_poeple=int)
-* all changeable parameters : other parameters.
-   
 
-3. Printer:
+3. Visualizer:
    
-   printSpreadProcess(): Use animation to print the virus spreading process.
-   
-   printSpreadDistribution(): Print the distribution graph of virus spread.
-   
-   printConclusion(): Print the number of uninfected people, recovered people and death people.
+   draw_current_simulation_state(): Draw the animation of each iteration.
+
+   save_result(): Save the final results.
 
 ## Engineering Infrastructure
 
