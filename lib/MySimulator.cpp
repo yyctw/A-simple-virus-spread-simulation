@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "MySimulator.hpp"
-#include "Parameter.hpp"
+#include "SimulationState.hpp"
 
 size_t SIMU_BOUND_SIZE = 4; // 4km^2 range
 

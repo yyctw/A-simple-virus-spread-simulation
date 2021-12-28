@@ -3,7 +3,7 @@
 #include <pybind11/stl.h>
 
 #include "MySimulator.hpp"
-#include "Parameter.hpp"
+#include "SimulationState.hpp"
 
 namespace py = pybind11;
 
