@@ -40,7 +40,7 @@ Run simulation using the Poetry environment.
 poetry run python3 main.py
 ```
 
-The visualization results of the simulation will saved as a Sim.gif file in the root directory of this repo.
+The visualization results of the simulation will saved in ./output_images/Simulation_policy{policy number}.png.
 
 ## Simulation result
 
@@ -91,51 +91,51 @@ config
 
 policy = 0 : free without healthcare
 
-![Sim_policy0](image/Sim_policy0.gif)
+![Simulation_policy0](output_images/Simulation_policy0.gif)
 
 Final result
 
-![Sim_policy0_result](image/Sim_policy0.png)
+![Simulation_policy0_result](output_images/Simulation_policy0.png)
 
 ---
 
 policy = 1 : free with healthcare (healthcare can reduce the mortality rate by half.)
 
-![Sim_policy1](image/Sim_policy1.gif)
+![Simulation_policy1](output_images/Simulation_policy1.gif)
 
 Final result
 
-![Sim_policy1_result](image/Sim_policy1.png)
+![Simulation_policy1_result](output_images/Simulation_policy1.png)
 
 ---
 
 policy = 2 : Attempted quarantine (infected people will go to quarantine area.)
 
-![Sim_policy2](image/Sim_policy2.gif)
+![Simulation_policy2](output_images/Simulation_policy2.gif)
 
 Final result
 
-![Sim_policy2_result](image/Sim_policy2.png)
+![Simulation_policy2_result](output_images/Simulation_policy2.png)
 
 ---
 
 policy = 3 : Moderate distancing (60% people can not move)
 
-![Sim_policy3](image/Sim_policy3.gif)
+![Simulation_policy3](output_images/Simulation_policy3.gif)
 
 Final result
 
-![Sim_policy3_result](image/Sim_policy3.png)
+![Simulation_policy3_result](output_images/Simulation_policy3.png)
 
 ---
 
 policy = 4 : Extensive distancing (90% people can not move)
 
-![Sim_policy4](image/Sim_policy4.gif)
+![Simulation_policy4](output_images/Simulation_policy4.gif)
 
 Final result
 
-![Sim_policy4_result](image/Sim_policy4.png)
+![Simulation_policy4_result](output_images/Simulation_policy4.png)
 
 ---
 
@@ -165,6 +165,8 @@ https://github.com/Eric860730/nsdhw_21au/tree/Eric860730-proposal-submission/pro
 
 12/21 [Feat] Finish all basic policy.
 
+12/28 [Feat] Modify the code structure and accelerate the simulation time successfully.
+
 ### Next goal
 Prepare final presentation.
 
@@ -182,9 +184,9 @@ Prepare final presentation.
 
 :white_check_mark: Week 6: Printer
 
-:red_circle: current doing ---> Week 7: Prepare final presentation.
+:white_check_mark: Week 7: Code Optimized.
 
-:white_large_square: Week 8: Flexible time(Add death rate of each age)
+:red_circle: current doing ---> Week 8: Prepare final presentation.
 
 ### TODO
 
@@ -197,4 +199,9 @@ Prepare final presentation.
 :white_large_square: Increase customized policy.
 
 #### for performance
-:white_large_square: Change the type of infected_person from vector to unorder_map at line 165 in MySimulator.cpp.
+
+:white_check_mark: Change the type of infected_person from vector to map at line 165 in MySimulator.cpp.
+
+:white_check_mark: Optimized the Simulation time on 10000 population. (total simulation time < 2s)
+
+:white_large_square: Use QT QUICK to accelerate visualization.
