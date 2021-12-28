@@ -8,7 +8,7 @@
 namespace py = pybind11;
 
 PYBIND11_MODULE(_simulator, m) {
-  m.doc() = "test my simulator";
+  m.doc() = "My Simulator";
   m.def("Move", &Move, "Everyone move once");
   m.def("SpreadVirus", &SpreadVirus,
         "After move once, the infected_people have probability to spread the "
@@ -30,7 +30,7 @@ PYBIND11_MODULE(_simulator, m) {
 
   py::class_<SimulationState>(m, "SimulationState")
       .def(py::init<size_t, size_t, size_t, float, float, float, int, float,
-                    float, float, float, size_t, size_t, float, float, size_t>())
+                    float, float, float, size_t, size_t, float, float, size_t, float>())
       // read parameter
       .def_property_readonly("total_num_people",
                              &SimulationState::total_num_people)
@@ -58,7 +58,6 @@ PYBIND11_MODULE(_simulator, m) {
       .def_property_readonly("mode", &SimulationState::mode)
       .def_property_readonly("policy", &SimulationState::policy)
 
-      .def_property_readonly("print_status", &SimulationState::PrintStatus)
 
       .def_readwrite("g_person_status", &SimulationState::g_person_status)
       .def_readwrite("draw_health", &SimulationState::draw_health)
