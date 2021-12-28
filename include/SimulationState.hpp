@@ -57,14 +57,14 @@ public:
                       float mortality_rate, float recovery_rate,
                       size_t healthcare_capacity, float lx, float rx, float uy,
                       float dy, size_t simulation_step, size_t mode, float move_step,
-                      float spread_range, size_t policy)
+                      float spread_range, size_t policy, float accepting_isolation_rate)
       : m_total_num_people(total_num_people),
         m_infected_people(infected_people), m_move_speed(move_speed),
         m_infect_rate(infect_rate), m_mortality_rate(mortality_rate),
         m_recovery_rate(recovery_rate),
         m_healthcare_capacity(healthcare_capacity), m_simulation_step(simulation_step),
         m_mode(mode), m_move_step(move_step), m_spread_range(spread_range),
-        m_policy(policy), g_person_status(total_num_people), draw_health(total_num_people - infected_people),
+        m_policy(policy), m_accept_isolation_rate(accepting_isolation_rate), g_person_status(total_num_people), g_health_people(total_num_people - infected_people), draw_health(total_num_people - infected_people),
         draw_infected(infected_people), draw_recovered(0), draw_dead(0) {
     g_boundary.left_x = lx;
     g_boundary.right_x = rx;
@@ -88,7 +88,7 @@ public:
                                                  uninit_state.g_boundary.up_y);
 
     for (size_t i = 0; i < uninit_state.m_total_num_people; ++i) {
-      uninit_state.g_person_status[i].m_index = i; // x coord.
+      uninit_state.g_person_status[i].m_index = i;
       uninit_state.g_person_status[i].m_coordinate.first =
           unif_x(generator); // x coord.
       uninit_state.g_person_status[i].m_coordinate.second =
@@ -149,30 +149,10 @@ public:
     }
 
     // set init health people
-    //for (size_t i = uninit_state.m_infected_people; i < uninit_state.m_total_num_people; ++i) {
-    //}
+    for (size_t i = uninit_state.m_infected_people; i < uninit_state.m_total_num_people; ++i) {
+      uninit_state.g_health_people[i - uninit_state.m_infected_people] = uninit_state.g_person_status[i].m_index;
+    }
 
-  }
-
-  // Print current status
-  void PrintStatus() {
-    std::cout << "===== Init Config =====" << std::endl;
-    std::cout << "total number of people = " << this->m_total_num_people
-              << std::endl;
-    std::cout << "infected people = " << this->m_infected_people << std::endl;
-    std::cout << "moving speed of people = " << this->m_move_speed << std::endl;
-    std::cout << "infected rate = " << this->m_infect_rate << std::endl;
-    std::cout << "mortality rate = " << this->m_mortality_rate << std::endl;
-    std::cout << "recovery rate = " << this->m_recovery_rate << std::endl;
-    std::cout << "healthcare capacity = " << this->m_healthcare_capacity
-              << std::endl;
-    std::cout << "===== Global Status =====" << std::endl;
-    std::cout << "total number of people = " << this->m_total_num_people
-              << std::endl;
-    std::cout << "health people =  " << this->g_num_health << std::endl;
-    std::cout << "infected people =  " << this->g_num_infected << std::endl;
-    std::cout << "recovered people =  " << this->g_num_recovered << std::endl;
-    std::cout << "dead people =  " << this->g_num_dead << std::endl;
   }
 
   // member function for read data
@@ -241,8 +221,9 @@ public:
   // global parameter
   myBoundary g_boundary;
   std::vector<PersonStatus> g_person_status;
-  //std::map<size_t, PersonStatus> g_health_people;
+  std::vector<size_t> g_health_people;
   std::map<size_t, PersonStatus> g_infected_people;
+  std::vector<size_t> g_tmp_new_infected_people;
   std::vector<std::pair<float, float>> draw_health;
   std::vector<std::pair<float, float>> draw_infected;
   std::vector<std::pair<float, float>> draw_recovered;
