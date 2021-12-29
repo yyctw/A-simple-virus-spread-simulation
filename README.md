@@ -77,14 +77,17 @@ Execute above calculations at each time step until there is no one be infected.
 Python API
 
 1. set_simulation_state(config): Set the simulation state according to the config set by the user in config.py and return the init simulation state.
+    
     Parameters: config: The Global parameters in config.py.
     
     Returns:    simulation state.
 
 2. build_figure(): Build the figure shape and return the figure.
+    
     Returns:    figure, fig1, fig2.
 
 3. run(simulation_state, figure, fig1, fig2, on_each_iter_updated, save_result): Run the simulator.
+    
     Parameters: simulation_state: The init simulation state.
                 figure: init figure.
                 fig1: init fig1.
@@ -104,7 +107,7 @@ The system uses "make" to compile the c++ code into *.so file as a python model.
 ### Testing Framework
 
 Python: pytest
-According to this article[1], these policies should show the following distribution(under same situation):
+According to [this article](https://www.washingtonpost.com/graphics/2020/world/corona-simulator/), these policies should show the following distribution(under same situation):
 1. Free: exponential curve (smallest variance)
 
 2. Attempted quarantine: flatten curve than Free (the second smallest variance)
