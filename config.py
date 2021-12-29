@@ -4,7 +4,7 @@ You can only change the value of each variables, other changes is not allow.
 """
 # all input parameter
 # total number of people for simulation(optional, default = 1000(<= 10000))
-TOTAL_POPULATION = 10000
+TOTAL_POPULATION = 1000
 # init number of infected people(percentage)(optional, default =
 # 1 %)
 INFECTED_PEOPLE = 0.01
@@ -26,7 +26,7 @@ mode = 0 : fast, only save the final result graph of simulation.
 mode = 1 : slow, show and update animation on the screen immediately.
 mode = 2 : slow, save animation in ./output_images/Simulation_policy{x}.gif.
 """
-MODE = 0
+MODE = 2
 # Max simulation step, default = 1000
 SIMULATION_STEP = 1000
 # the distance of move one step(every iter move one step), default = 0.001
@@ -44,10 +44,10 @@ policy = 3 : Moderate distancing
 policy = 4 : Extensive distancing
             90% people cannot move.
 """
-POLICY = 0
+POLICY = 4
 
 # If policy = 2, the probability of an infected person being quarantined.
-ACCEPT_ISOLATION_RATE = 1.0
+ACCEPT_ISOLATION_RATE = 0.95
 
 # Simulation boundary
 LEFT_X = 0.0
