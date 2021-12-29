@@ -13,21 +13,16 @@ from rich.traceback import install
 install(show_locals=True)
 
 
-def build_figure(lx_bound, rx_bound, dy_bound, uy_bound, simulation_steps, total_num_people):
+def build_figure():
     # set figure
     figure = plt.figure(figsize = (7, 9))
     spec = figure.add_gridspec(ncols=1, nrows=2, height_ratios=[5,2])
 
     fig1 = figure.add_subplot(spec[0,0])
-    fig1.set_xlim(lx_bound - 0.1, rx_bound + 0.1)
-    fig1.set_ylim(dy_bound - 0.1, uy_bound + 0.1)
 
     fig2 = figure.add_subplot(spec[1,0])
-    fig2.set_title('infection statistics')
-    fig2.set_xlim(0, simulation_steps)
-    fig2.set_ylim(0, total_num_people + 100)
 
-    return figure, spec, fig1, fig2
+    return figure, fig1, fig2
 
 
 def draw_current_simulation_state(simulation_state, figure, fig1, fig2, count_population, frames):

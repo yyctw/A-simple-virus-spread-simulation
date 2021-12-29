@@ -86,22 +86,16 @@ def main() -> None:
     simulation_state = set_simulation_state(config)
 
     # init figure for visualization
-    figure, _, fig1, fig2 = my_simulation.build_figure(simulation_state.lx_bound, simulation_state.rx_bound, simulation_state.dy_bound,
-                                                       simulation_state.uy_bound, simulation_state.simulation_step, simulation_state.total_num_people)
+    figure, fig1, fig2 = my_simulation.build_figure()
 
     # run simulator
-    if simulation_state.mode == 2:
-        # Store the results in a gif file.
-        my_simulation.run_and_build_animation(
-            simulation_state, figure, fig1, fig2)
-    else:
-        my_simulation.run(
-            simulation_state,
-            figure,
-            fig1,
-            fig2,
-            on_each_iter_updated,
-            save_result)
+    my_simulation.run(
+        simulation_state,
+        figure,
+        fig1,
+        fig2,
+        on_each_iter_updated,
+        save_result)
 
 
 if __name__ == '__main__':
