@@ -30,8 +30,10 @@ Then observe the distribution of the virus spread and the number of deaths.
 ## System Architecture
 
 ### Input
+All parameters in config.py
 
 ### Output
+The graph or animation of simulation results.
 
 ### Mathematical Model Description
 
@@ -72,28 +74,36 @@ Execute above calculations at each time step until there is no one be infected.
 
 ## API Description
 
-2. Simulator:
-   
-   simulateVirusSpread(parameters: parser's results): According to the user's input, the spread of the virus is simulated.
-   
+Python API
 
-3. Visualizer:
+1. set_simulation_state(config): Set the simulation state according to the config set by the user in config.py and return the init simulation state.
+    Parameters: config: The Global parameters in config.py.
+    
+    Returns:    simulation state.
+
+2. build_figure(): Build the figure shape and return the figure.
+    Returns:    figure, fig1, fig2.
+
+3. run(simulation_state, figure, fig1, fig2, on_each_iter_updated, save_result): Run the simulator.
+    Parameters: simulation_state: The init simulation state.
+                figure: init figure.
+                fig1: init fig1.
+                fig2: init fig2.
+                on_each_iter_updated: draw the simulation results in each iteration.
+                save_result: save the final simulation results.
+
+    Returns:    None.
    
-   draw_current_simulation_state(): Draw the animation of each iteration.
-
-   save_result(): Save the final results.
-
 ## Engineering Infrastructure
 
 
 ### Build System
 
-make
+The system uses "make" to compile the c++ code into *.so file as a python model. Then use "Poetry" to manage the dependencies of the python package.
 
 ### Testing Framework
 
 Python: pytest
-C++: Google test
 According to this article[1], these policies should show the following distribution(under same situation):
 1. Free: exponential curve (smallest variance)
 
@@ -106,8 +116,6 @@ According to this article[1], these policies should show the following distribut
 ### Version control
 
 git
-
-poetry (packaging and dependency management)
 
 ## Build environment
 
