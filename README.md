@@ -71,6 +71,7 @@ Execute above calculations at each time step until there is no one be infected.
 
 ## System Workflow
 
+![workflow](images/workflow.png)
 
 ## API Description
 
