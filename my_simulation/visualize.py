@@ -149,4 +149,4 @@ def run_and_build_animation(simulation_state: _simulator.SimulationState, figure
     dirname = './output_images'
     os.makedirs(dirname, exist_ok = True)
     ani.save(f'{dirname}/Simulation_policy{simulation_state.policy}.gif', writer='pillow', fps=1/0.04)
-    plt.savefig(f'{dirname}/Simulation_policy%i.png')
+    plt.savefig(f'{dirname}/Simulation_policy{simulation_state.policy}.png')
