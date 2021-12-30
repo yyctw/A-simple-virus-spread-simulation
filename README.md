@@ -129,10 +129,10 @@ Install the dependencies with Poetry.
 poetry install --no-dev
 ```
 
-Compile the \*.so file for run simulation.
+Compile the \*.so file in the poetry virtual environment.
 
 ``` bash
-make
+poetry run make
 ```
 
 ## Set config
