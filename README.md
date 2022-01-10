@@ -10,6 +10,8 @@ This simulation use C++ computing power to speed up the calculation process in t
 
 This simulation combine C++ and python3 by pybind11.
 
+In this simulator, increase problem size to 10000 population requires only 1.5 seconds of computational simulation time.
+
 ## Problem to Solve
 In recent years, COVID-19 has been raging around the world.
 It has a great impact on everyone's lives.
@@ -258,58 +260,13 @@ Final result
 ### proposal
 https://github.com/Eric860730/nsdhw_21au/tree/Eric860730-proposal-submission/proposal/Eric860730
 
-### Completion
-11/24 [Feat] Success run on pybind and add test for read class data.
-
-12/14 [Feat] Can run easy simulation on pure cpp environment without policy.
-
-12/16 [Feat] Can run on python with pybind and plot result graph.
-
-12/18 [Feat] Github Action done.
-
-12/18 [Feat] Can plot simulation result as animation.
-
-12/20 [Feat] Finish plot and accelerate simulation time.
-
-12/21 [Feat] Finish all basic policy.
-
-12/28 [Feat] Modify the code structure and accelerate the simulation time successfully.
-
 ### Next goal
-Prepare final presentation.
-
-### Schedule
-
-:white_check_mark: Week 1: Parser, Simulator
-
-:white_check_mark: Week 2: Simulator(policy: Free)
-
-:white_check_mark: Week 3: Simulator(policy: Attempted quarantine)
-
-:white_check_mark: Week 4: Simulator(policy: Moderate distancing)
-
-:white_check_mark: Week 5: Simulator(policy: Extensive distancing)
-
-:white_check_mark: Week 6: Printer
-
-:white_check_mark: Week 7: Code Optimized.
-
-:red_circle: current doing ---> Week 8: Prepare final presentation.
+Increase customized policy.
 
 ### TODO
-
-:white_check_mark: Combine my cpp with python by pybind and visualize.
-
-:white_check_mark: Github Action.
-
-:white_check_mark: Increase policy.
 
 :white_large_square: Increase customized policy.
 
 #### for performance
-
-:white_check_mark: Change the type of infected_person from vector to map at line 165 in MySimulator.cpp.
-
-:white_check_mark: Optimized the Simulation time on 10000 population. (total simulation time < 2s)
 
 :white_large_square: Use QT QUICK to accelerate visualization.
